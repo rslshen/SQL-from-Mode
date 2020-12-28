@@ -8,5 +8,6 @@
 // Write a query that includes players' names and a column that classifies them into four categories based on height. Keep in mind that the answer we provide is only one of many possible answers, since you could divide players' heights in many ways.
 
 SELECT *,
-       CASE WHEN year = 'JR' OR year = 'SR' THEN player_name END AS is_a_junior_or_senior
+       CASE WHEN year IN ('JR', 'SR') THEN player_name
+       ELSE NULL END AS is_junior_or_senior
   FROM benn.college_football_players

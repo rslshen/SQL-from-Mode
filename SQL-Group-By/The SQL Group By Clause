@@ -1,0 +1,9 @@
+//The SQL Group By Clause
+//Calculate the total number of shares traded each month. Order your results chronologically.
+
+SELECT year,
+       month,
+       COUNT(volume) AS volume
+  FROM tutorial.aapl_historical_stock_price
+GROUP BY year, month
+ORDER BY year, month

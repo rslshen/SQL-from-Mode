@@ -1,0 +1,21 @@
+-- Write a query that displays the number of players in each state, with FR, SO, JR, and SR players in separate columns and another column for the total number of players. Order results such that states with the most players come first.
+
+SELECT state,
+       COUNT(CASE WHEN year = 'FR' THEN 1 ELSE NULL END) AS fr_count,
+       COUNT(CASE WHEN year = 'SO' THEN 1 ELSE NULL END) AS so_count,
+       COUNT(CASE WHEN year = 'JR' THEN 1 ELSE NULL END) AS jr_count,
+       COUNT(CASE WHEN year = 'SR' THEN 1 ELSE NULL END) AS sr_count,
+       COUNT(1) AS total_count
+  FROM benn.college_football_players
+ GROUP BY state
+ ORDER BY 6 DESC
+ 
+ 
+ -- Write a query that shows the number of players at schools with names that start with A through M, and the number at schools with names starting with N - Z.
+ 
+ SELECT CASE WHEN school_name < 'N' THEN 'A-M'
+            WHEN school_name >= 'N' THEN 'N-Z'
+            ELSE NULL END AS school_name_group,
+       COUNT(1) AS players
+  FROM benn.college_football_players
+ GROUP BY 1
